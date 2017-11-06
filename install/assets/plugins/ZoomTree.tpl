@@ -46,9 +46,9 @@ $('input.rangeTree').on('change', function () {
 	.treerange {
 	position: absolute;
 	left: 5px;
-    bottom: -5px;
+    bottom: 5px;
 	height:40px;
-	width:100%;
+	width:90%;
 	cursor: pinter;
 	z-index:999999;
 	opacity:0.5;
