@@ -33,14 +33,12 @@ jQuery(document).ready(function($) {
 $('input.rangeTree').on('change', function () {
     var v = $(this).val();
     $('#treeRoot').css('font-size', v + 'em')
-	//$('#treeRoot').css('line-height', v + 'em')
     $('.textsize').html(v + 'em');
     // Save the color in local storage
     TfontSize = $(this).val();
     localStorage.setItem('my_evo_TfontSize', TfontSize);
 });
 });
-    ////close document ready
 </script>
 <style>
 	.treerange {
@@ -53,12 +51,12 @@ $('input.rangeTree').on('change', function () {
 	z-index:999999;
 	opacity:0.5;
 	transition: all;
-	-webkit-transition-duration: 1s; /* Safari */
-    transition-duration: 1s;}
+	-webkit-transition-duration: 2s; /* Safari */
+    transition-duration: 2s;}
 	.treerange:hover {
 	opacity:1;}
 	</style>	
-	<div class=\"treerange text-center\"><input class=\"rangeTree\" type=\"range\" value=\"1\" min=\"1\" max=\"2\" step=\"0.001\"><!--<span class=\"textsize\"></span>--></div>
+	<div class=\"treerange text-center\"><input class=\"rangeTree\" type=\"range\" value=\"1\" min=\"1\" max=\"2\" step=\"0.001\" onchange=\"console.log(this.value)\"><!--<span class=\"textsize\"></span>--></div>
 	";
     break;
 }
