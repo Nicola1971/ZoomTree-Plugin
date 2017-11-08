@@ -5,9 +5,10 @@
  *
  * @author    Nicola Lambathakis http://www.tattoocms.it/
  * @category    plugin
- * @version    1
+ * @version    1.2
  * @license	 http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerTreePrerender
+ * @internal    @properties @properties &minVal= Min value of range:;string;1 &maxVal= Max value of range:;string;2 &rVal= Value of range:;string;1 &Step= Range step:;string;0.001 &showResetButton= Show Reset Button:;list;yes,no;yes &showSize= Show Font Size:;list;yes,no;no &marginBottom= Margin from Bottom:;string;20px
  * @internal    @installset base
  * @internal    @modx_category Admin
  **/
@@ -16,6 +17,19 @@ $e = &$modx->Event;
 $output ='';
 switch($e->name) {
 case 'OnManagerTreePrerender':
+$minVal = isset($minVal) ? $minVal : '1';
+$maxVal = isset($maxVal) ? $maxVal : '2';
+$rVal = isset($rVal) ? $rVal : '1';
+$Step = isset($Step) ? $Step : '0.001';
+$marginBottom = isset($marginBottom) ? $marginBottom : '20px';
+$ResetButton = '';	
+if ($showResetButton == yes) {
+$ResetButton = '<a href="javascript:;" onclick="cleanLocalStorageReloadAll(\'my_evo_TfontSize\')" class="resetTree"><i class="fa fa-refresh"></i></a>';
+}
+if ($showSize == yes) {
+$TextSize = '<span class="textsize"></span>';
+}
+
 $output = "
 <script>
 jQuery(document).ready(function($) {
@@ -29,6 +43,7 @@ jQuery(document).ready(function($) {
     function setTfontSize(TfontSize) {
         $('#treeRoot').css('font-size', TfontSize + 'em')
         $('.textsize').html(TfontSize + 'em');
+		$('.rangeTree').val(TfontSize);
     }
 $('input.rangeTree').on('change', function () {
     var v = $(this).val();
@@ -39,15 +54,23 @@ $('input.rangeTree').on('change', function () {
     localStorage.setItem('my_evo_TfontSize', TfontSize);
 });
 });
+//clear Local Storage and reload all frames
+function cleanLocalStorageReloadAll(keys) {
+    keys = keys.split(',');
+    for (var i = 0; i < keys.length; i++) {
+        delete localStorage[keys[i]];
+    }
+    location.reload();
+}
 </script>
 <style>
+input.rangeTree {cursor: pointer;}
 	.treerange {
 	position: absolute;
-	left: 5px;
-    bottom: 5px;
+	left: 10px;
+    bottom: $marginBottom;
 	height:40px;
 	width:90%;
-	cursor: pinter;
 	z-index:999999;
 	opacity:0.5;
 	transition: all;
@@ -55,8 +78,10 @@ $('input.rangeTree').on('change', function () {
     transition-duration: 2s;}
 	.treerange:hover {
 	opacity:1;}
+	.resetTree {font-size:10px;display:inline-block;vertical-align:top;padding:3px 6px;}
+	.textsize {font-size:11px;display:inline-block;vertical-align:top;padding:3px 0;}
 	</style>	
-	<div class=\"treerange text-center\"><input class=\"rangeTree\" type=\"range\" value=\"1\" min=\"1\" max=\"2\" step=\"0.001\" onchange=\"console.log(this.value)\"><!--<span class=\"textsize\"></span>--></div>
+	<div class=\"treerange text-center\"><input class=\"rangeTree\" type=\"range\" value=\"$rVal\" min=\"$minVal\" max=\"$maxVal\" step=\"$Step\" onchange=\"console.log(this.value)\"> $ResetButton $TextSize</div>
 	";
     break;
 }
