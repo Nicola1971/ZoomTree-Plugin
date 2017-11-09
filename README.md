@@ -16,7 +16,7 @@ R:
 
 R: 
 - Go to **Elements > Plugins > Edit Plugin Execution Order > OnManagerTreePrerender** 
-- Drag **ZoomTree** Plugin BELOW **Elements in Tree**
+- Drag **ZoomTree** Plugin BELOW **Elements in Tree** :smile:
 - Save
 
 #### Q: The range input is positioned too low or too high, Can i change the margin from bottom?
