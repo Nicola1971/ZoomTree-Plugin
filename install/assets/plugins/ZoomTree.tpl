@@ -5,10 +5,10 @@
  *
  * @author    Nicola Lambathakis http://www.tattoocms.it/
  * @category    plugin
- * @version    1.2
+ * @version    1.3
  * @license	 http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerTreePrerender
- * @internal    @properties @properties &minVal= Min value of range:;string;1 &maxVal= Max value of range:;string;2 &rVal= Value of range:;string;1 &Step= Range step:;string;0.001 &showResetButton= Show Reset Button:;list;yes,no;yes &showSize= Show Font Size:;list;yes,no;no &marginBottom= Margin from Bottom:;string;20px
+ * @internal    @properties &zoomElements= Zoom Elements In Tree :;list;yes,no;no &minVal= Min value of range:;string;1 &maxVal= Max value of range:;string;2 &rVal= Value of range:;string;1 &Step= Range step:;string;0.001 &showResetButton= Show Reset Button:;list;yes,no;yes &showSize= Show Font Size:;list;yes,no;no &marginBottom= Margin from Bottom:;string;20px
  * @internal    @installset base
  * @internal    @modx_category Admin
  **/
@@ -29,6 +29,22 @@ $ResetButton = '<a href="javascript:;" onclick="cleanLocalStorageReloadAll(\'my_
 if ($showSize == yes) {
 $TextSize = '<span class="textsize"></span>';
 }
+if ($zoomElements == yes) {
+$SetElements = "
+		$('#tabTemp').css('font-size', TfontSize + 'em')
+		$('#tabTV').css('font-size', TfontSize + 'em')
+		$('#tabCH').css('font-size', TfontSize + 'em')
+		$('#tabSN').css('font-size', TfontSize + 'em')
+		$('#tabPL').css('font-size', TfontSize + 'em')
+		$('#tabMD').css('font-size', TfontSize + 'em')";
+$loadElements = "
+	    $('#tabTemp').css('font-size', v + 'em')
+	    $('#tabTV').css('font-size', v + 'em')
+	    $('#tabCH').css('font-size', v + 'em')
+	    $('#tabSN').css('font-size', v + 'em')
+	    $('#tabPL').css('font-size', v + 'em')
+	    $('#tabMD').css('font-size', v + 'em')";
+}
 
 $output = "
 <script>
@@ -42,12 +58,14 @@ jQuery(document).ready(function($) {
     }
     function setTfontSize(TfontSize) {
         $('#treeRoot').css('font-size', TfontSize + 'em')
+        $SetElements
         $('.textsize').html(TfontSize + 'em');
 		$('.rangeTree').val(TfontSize);
     }
 $('input.rangeTree').on('change', function () {
     var v = $(this).val();
     $('#treeRoot').css('font-size', v + 'em')
+    $loadElements
     $('.textsize').html(v + 'em');
     // Save the color in local storage
     TfontSize = $(this).val();
