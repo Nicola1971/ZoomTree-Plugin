@@ -30,7 +30,8 @@ if ($showSize == yes) {
 $TextSize = '<span class="textsize"></span>';
 }
 if ($HideHscroll == yes) {
-$HideScroll = '#treeHolder, .ElementsInTree #tree .tab-page .panel-group .panel, .ElementsInTree #tree #tabDoc.tab-page>div {overflow-x: hidden!important;}';
+$HideScroll = '#treeHolder, .ElementsInTree #tree .tab-page .panel-group .panel, .ElementsInTree #tree #tabDoc.tab-page>div {overflow-x: hidden!important;}
+a.node{overflow-x: hidden; text-overflow: ellipsis;}';
 }
 if ($zoomElements == yes) {
 $SetElements = "
