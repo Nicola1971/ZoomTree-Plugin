@@ -5,10 +5,10 @@
  *
  * @author    Nicola Lambathakis http://www.tattoocms.it/
  * @category    plugin
- * @version    1.3.1
+ * @version    1.3.2
  * @license	 http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerTreePrerender
- * @internal    @properties &zoomElements= Zoom Elements In Tree :;list;yes,no;no &HideHscroll= Disable horizontal scrollbar :;list;yes,no;yes &minVal= Min value of range:;string;1 &maxVal= Max value of range:;string;2 &rVal= Value of range:;string;1 &Step= Range step:;string;0.001 &showResetButton= Show Reset Button:;list;yes,no;yes &showSize= Show Font Size:;list;yes,no;no &marginBottom= Margin from Bottom:;string;20px
+ * @internal    @properties &zoomElements= Zoom Elements In Tree :;list;yes,no;no &minVal= Min value of range:;string;1 &maxVal= Max value of range:;string;2 &rVal= Value of range:;string;1 &Step= Range step:;string;0.001 &showResetButton= Show Reset Button:;list;yes,no;yes &showSize= Show Font Size:;list;yes,no;no &marginBottom= Margin from Bottom:;string;20px &HideHscroll= Disable horizontal scrollbar :;list;yes,no;no;;not needed from evo1.4RC2 
  * @internal    @installset base
  * @internal    @modx_category Admin
  **/
