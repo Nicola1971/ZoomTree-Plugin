@@ -1,4 +1,4 @@
-# ZoomTree-Plugin 1.3 for Evolution cms
+# ZoomTree-Plugin 1.3.2 for Evolution cms
 Zoom Tree plugin adds a small input range to zoom resource tree
 
 ![zoomtreee](https://user-images.githubusercontent.com/7342798/33218965-05130402-d140-11e7-8e9a-8a3a7c88e888.jpg)
